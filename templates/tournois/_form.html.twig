@@ -1,0 +1,49 @@
+<div class="m-4">
+
+{{ form_start(form) }}
+
+    {{ form_row(form.imageFile) }}
+    {{ form_row(form.imageFile1) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.annee) }}
+    {{ form_row(form.nbParticipants) }}
+    <h5 class="text-primary">Epreuves <button type="button" class="add_item_link1 btn btn-success" data-collection-holder-class="newSports">Ajouter un sport</button></h5>
+    <div class="row">
+	{% for sportField in form.sports %}
+		<div class="col-3">
+			{{ form_widget(sportField) }}
+		</div>
+		{% if loop.index % 4 == 0 %}
+		</div>
+		<div class="row">
+		{% endif %}
+	{% endfor %}
+
+	<ul class="newSports" data-index="{{ form.newSports|length > 0 ? form.newSports|last.vars.name + 1 : 0 }}"  data-prototype="{{ form_widget(form.newSports.vars.prototype)|e('html_attr') }}">
+    </ul>
+
+    <h5 class="text-primary">Participants <button type="button" class="add_item_link btn btn-success" data-collection-holder-class="newParticipants">Ajouter un participant</button></h5>
+
+	 <div class="row">
+	{% for participantsField in form.participants %}
+		<div class="col-3">
+			{{ form_widget(participantsField) }}
+		</div>
+		{% if loop.index % 4 == 0 %}
+		</div>
+		<div class="row">
+		{% endif %}
+	{% endfor %}
+
+    <ul class="newParticipants" data-index="{{ form.newParticipants|length > 0 ? form.newParticipants|last.vars.name + 1 : 0 }}"  data-prototype="{{ form_widget(form.newParticipants.vars.prototype)|e('html_attr') }}">
+    </ul>
+        
+
+
+    <button class="btn btn-success my-3">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+</div>
+
+
+
+ 

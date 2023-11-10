@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CCT Main
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="espaceTitre  justify-content-center align-items-center">
+		<div class="neon ">
+			<span class="textNeonTitre " data-text="cimiez crew tournament">CIMIEZ CREW TOURNAMENT</span>
+			<span class="gradient"></span>
+			<span class="spotlight"></span>
+		</div>
+	</div>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-12 col-lg-9">
+
+				<h4 class="colorful-titleLeft">WINNERS</h4>
+
+				<div class="row">
+
+					<div class="mainlogo">
+						<h6 class="text-center">2016/2017</h6>
+						<img class="logobottom" src="{{asset('images/imageWin/yo.png')}}"/>
+						<img class="logotop" src="{{asset('images/imageWin/remy.png')}}"/>
+					</div>
+
+					<div class="mainlogo">
+						<h6 class="text-center">2018/2019</h6>
+						<img class="logobottom" src="{{asset('images/imageWin/flav-6457aa2f6955a166187017.png')}}"/>
+						<img class="logotop" src="{{asset('images/imageWin/mouss.png')}}"/>
+					</div>
+
+					<div class="mainlogo">
+						<h6 class="text-center">2020/2021</h6>
+						<img class="logobottom" src="{{asset('images/imageWin/souss5.jpg')}}"/>
+						<img class="logotop" src="{{asset('images/imageWin/mouss2.png')}}"/>
+					</div>
+
+					<div class="mainlogo">
+						<h6 class="text-center">2022/2023</h6>
+						<img class="logobottom" src="{{asset('images/imageWin/winCOik.png')}}"/>
+						<img class="logotop" src="{{asset('images/imageWin/max.png')}}"/>
+					</div>
+				</div>
+				<br><br><br><br>
+
+				<h4 class="colorful-titleLeft">LOOSERS</h4>
+
+				<div class="row">
+					<div class="mainlogo">
+
+						<img class="logobottom" src="{{asset('images/imageLoose/bibiz.jpg')}}"/>
+						<img class="logotop" src="{{asset('images/imageLoose/arno.png')}}"/>
+					</div>
+
+					<div class="mainlogo">
+
+						<img class="logobottom" src="{{asset('images/imageLoose/john.png')}}"/>
+						<img class="logotop" src="{{asset('images/imageLoose/prez.png')}}"/>
+					</div>
+
+					<div class="mainlogo">
+
+						<img class="logobottom" src="{{asset('images/imageLoose/prad.png')}}"/>
+						<img class="logotop" src="{{asset('images/imageLoose/thom.png')}}"/>
+					</div>
+
+					<div class="mainlogo">
+
+						<img class="logobottom" src="{{asset('images/imageLoose/dje.png')}}"/>
+						<img class="logotop" src="{{asset('images/imageLoose/FAFA.jpg')}}"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-3 text-center ">
+				<h4 class="colorful-titleRight  ">VIDEOS</h4>
+				<div class="row">
+					<div class="col-12">
+						<video class="tailleVideoHome" preload="none" src="{{ asset('videos/videoIndex/cct-2017_HwLJUl4o.mp4')}}" controls alt="video cct"></video>
+					</div>
+					<div class="col-12">
+						<video class="tailleVideoHome" preload="none" src="{{ asset('videos/videoIndex/longueur-krounch2-gp_sCR5HGc8.mp4')}}" controls alt="video cct"></video>
+					</div>
+					<div class="col-12">
+						<video class="tailleVideoHome" preload="none" src="{{ asset('videos/videoIndex/pedalo-yokrounch_0RmVgxtd.mp4')}}" controls alt="video cct"></video>
+					</div>
+					<div class="col-12">
+						<video class="tailleVideoHome" preload="none" src="{{ asset('videos/videoIndex/teaser-hd-pour-appareils-apple-qualite-optimale_U7JDEz5E.mp4')}}" controls alt="video cct"></video>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{#fin container#}
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classement générale
+{% endblock %}
+
+
+{% block body %}
+
+
+	<div class="espaceTitre">
+		<div class="neon">
+			<span class="textNeonTitre1" data-text="{{tournois.annee}} général">{{tournois.annee}}
+				général</span>
+			<span class="gradient"></span>
+			<span class="spotlight"></span>
+		</div>
+	</div>
+	<div class="d-flex justify-content-center">
+
+						<button id="classByOrder" class="btn btn-secondary col-5 mx-1 buttonStyle">Classer par Ordre décroissant</button>
+						<button id="classByOrder1" class="btn btn-secondary col-5 mx-1 buttonStyle">Classer par Ordre croissant</button>
+					</div>
+
+	<div class="table-container">
+		<table class="steelBlueCols">
+			<thead>
+				<tr>
+					
+					<th>Position</th>
+					<th>Joueur</th>
+					{% for classement in finalArray | first %}
+						{# {{ dump(classement.sports.nom) }} #}
+						<th>{{classement.sports.nom}}</th>
+					{% endfor %}
+					<th>Total</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for nom, classements in finalArray %}
+					{% set position = null %}
+					{% set positionFound = false %}
+					{% for positionData in positions %}
+						{% if positionData.participants.nom == nom %}
+							{% set position = positionData.positions %}
+							{% set positionFound = true %}
+						{% endif %}
+						{% if positionFound %}{% endif %}
+					{% endfor %}
+					<tr class="ligne-trophee">
+						<td class="joliePositionChiffre">{{ position }}</td>
+						<td>{{ nom }}</td>
+						{% set totalPoints = 0 %}
+						{% for classement in classements %}
+							<td>{{classement.points}}</td>
+							{% set totalPoints = totalPoints + classement.points %}
+							{# ajout des points dynamiquement #}
+						{% endfor %}
+						<td class="total-trophee" id="totalTrophee">{{totalPoints}}</td>
+
+					{% endfor %}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	{# <td><a href="{{ path('app_classement_show', {'id': tournois.id}) }}"> Voir</a>
+				<a href="{{ path('app_classement_edit', {'id': tournois.id}) }}">Modifier</a>
+			</td>
+		
+	
+										<tr>
+											<td colspan="3">no records found</td>
+										</tr> #}
+
+
+	{# <a href="{{ path('app_classement_new', {'tournois' : tournois.id}) }}">Create new</a> #}
+
+{% endblock %}
+{% block javascripts %}
+	<script src={{ asset('js/script.js')}}></script>
+{% endblock %}

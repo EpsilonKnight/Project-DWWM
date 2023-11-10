@@ -1,0 +1,171 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+{% for participant in participants %}
+	<div class="titre-participant mb-4">
+		<h1 class="text-center texte-animate-titre">Resumé de
+			{{ participant.nom }}</h1>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<div class="row d-md-flex">
+					{% for trophee in participant.trophees %}
+						<div class="col-6 col-md-4">
+							{% for tournoi in participant.tournois %}
+								{% if trophee.tournois.annee == tournoi.annee %}
+									{% for sport in sports %}
+										{% if trophee.sports.id == sport.id %}
+											<a href="{{ path('classement_epreuve', {'id': sport.id}) }} ">
+												<div class="trophee-container rounded-4">
+													<img class="tropheeParticipant" src="{{ asset('images/imageTrophee/' ~ trophee.sports.imageTrophee) }}" alt="trophées"/>
+													<div class="trophee-nom">{{ trophee.sports.nom }}
+														{{ tournoi.annee }}</div>
+												</div>
+											</a>
+										{% endif %}
+									{% endfor %}
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6">
+				<div class="row">
+					<div class="col-12 col-md-12">
+						<div class="row">
+							<div class="col-3 col-lg-4">
+								{% set participationsCount = 0 %}
+								{# Initialize the variable here #}
+								<table class="table">
+									<tbody>
+										<th>Année</th>
+										{% for tournoi in participant.tournois() %}
+											<tr>
+												<td>{{ tournoi.annee }}</td>
+												{% set participationsCount = participationsCount + 1 %}
+												{# Increment the variable #}
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+								<p>Participations :
+									{{ participationsCount }}</p>
+							</div>
+
+							<div class="col-3 col-lg-4">
+								{% set totalPositions = 0 %}
+								<table class="table">
+									<tbody>
+										<th>Position</th>
+										{% for position in participant.positions %}
+											{% set totalPositions = totalPositions + position.positions %}
+											<tr>
+												<td>{{ position.positions }}</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+
+							{% set totalParticipants = 0 %}
+							<div class="col-3 col-lg-2">
+								<table class="table">
+									<tbody>
+										<th>Participants</th>
+										{% for tournoi in participant.tournois %}
+											{% set totalParticipants = totalParticipants + tournoi.nbParticipants %}
+											<tr>
+												<td>{{ tournoi.nbParticipants }}</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12 col-lg-12">
+								<h1 class="shadow_box">Indice de Position Moyenne</h1>
+								<h1 class="NbMoyPos">{{ (totalPositions / participationsCount) |round(1) }}</h1>
+								{# calcul la moyenne et le round en tilde ne prend arrondi 1 chiffre apres la virdule#}
+							</div>
+						</div>
+
+
+						<div class="container">
+							<div class="row">
+								<div class="col-12">
+									<table class="table">
+
+										<tbody>
+											{% for tournoi in tournois %}
+												{% if participant in tournoi.participants %}
+
+													<tr>
+														<td colspan="2">
+															<button type="button" class="col-12 col-md-12 btn btn-secondary m-2" onclick="cacherSport({{ tournoi.id }})">
+																Detail de
+																{{participant.nom}}
+																en
+																{{ tournoi.annee }}
+															</button>
+														</td>
+													</tr>
+													<tr id="classement_{{ tournoi.id }}" style="display: none;">
+														<td colspan="2">
+															<table class="table table-bordered">
+																<thead>
+																	<tr>
+																		<th>Sport</th>
+																		<th>Position</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	{% for classementItem in classement %}
+																		{% if classementItem.tournois.id == tournoi.id and classementItem.participants.id == participant.id %}
+																			<tr>
+																				<td>
+																					{% for sport in sports %}
+																						{% if sport.id == classementItem.sports.id %}
+																							{{ sport.nom }}
+																						{% endif %}
+																					{% endfor %}
+																				</td>
+																				<td>{{ classementItem.positions }}</td>
+																			</tr>
+																		{% endif %}
+																	{% endfor %}
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												{% endif %}
+											{% endfor %}
+										</tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{% endfor %}
+{% endblock %}{% block javascripts %}
+<script>
+function cacherSport(tournoiId) {
+let photos = document.getElementById("classement_" + tournoiId);
+if (photos.style.display === "none") {
+photos.style.display = "table-row";
+} else {
+photos.style.display = "none";
+}
+}</script>{% endblock %}

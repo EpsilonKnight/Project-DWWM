@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tournois{% endblock %}
+
+{% block body %}
+<div class="border border-white">
+    <h1 class="text-center mb-5 border border-white">Modifier le tournoi</h1>
+
+    {{ include('tournois/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_tournois_index') }}" class="btn btn-dark col-4">Retour aux tournois</a>
+
+    {{ include('tournois/_delete_form.html.twig') }}
+     </div>
+{% endblock %}
+
+
+{% block javascripts %}
+
+<script src={{ asset('js/collection-type.js')}}></script>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+<header class="container-fluid av-header-index position-nav navbar_nuage">
+
+	<div class="container">
+
+		<nav class="navbar navbar-expand-lg justify-content-between navbar-light ">
+			<a href="{{ path('home')}}" class="navbar-brand d-flex align-items-center">
+				<img src="{{asset('images/logo.png')}}" alt="Logo du site" class="w-md-50 me-3 taille-logo">
+				<span class="h5 text-uppercase text-warning neonTextNav">C C T</span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#av-navbar-menu" aria-controls="va-navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div id="av-navbar-menu" class="collapse navbar-collapse flex-grow-0 mt-1">
+
+				<ul class="navbar-nav me-auto">
+
+					{% if app.user %}
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('page_principale')}}">Tournois</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('detail_tournoi')}}">Détail</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('epreuve_liste')}}">Epreuves</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('participant_liste')}}">Joueurs</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('affichage_trophees')}}">Trophées</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('app_galerie_photos')}}">Galerie</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('liste_produits')}}">Produits</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('profil_user')}}">Profil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('app_logout')}}">Deconnexion</a>
+						</li>
+
+
+						{% if is_granted("ROLE_ADMIN") %}
+
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Gestion du site</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item" href="{{ path('app_trophees_index') }}">Gestion des trophées</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_sports_index') }}">Gestion des épreuves</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_participants_index') }}">Gestion des participants</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_tournois_index') }}">Gestion des tournois</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_commentaires_index') }}">Gestion des commentaires</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_positions_index') }}">Gestion des Positions</a>
+									</li>
+
+									<li>
+										<a class="dropdown-item" href="{{ path('app_classement_index1') }}">Gestion des points</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_photos_index') }}">Gestion des images</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_produits_index') }}">Gestion des produits</a>
+									</li>
+
+									<li>
+										<a class="dropdown-item" href="{{ path('app_user_index')}}">Gestion des utilisateurs</a>
+									</li>
+								{% endif %}
+							{% else %}
+								<li class="nav-item">
+									<a class="nav-link text-white" aria-current="page" href="{{ path('app_register')}}">Inscription</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-white" href="{{ path('app_login')}}">Connexion</a>
+								</li>
+
+							{% endif %}
+
+						</ul>
+
+					</div>
+					<a href="{{ path('app_panier')}}"><img src="{{asset('images/panier.png')}}" alt="Logo du panier" class="w-md-20 me-3 taille-logo-panier"></a>
+
+				</nav>
+
+			</div>
+		</header>

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaires index{% endblock %}
+
+{% block body %}
+    <h1>Commentaires index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Message</th>
+                <th>Epreuve</th>
+                <th>User</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td>{{ commentaire.id }}</td>
+                <td>{{ commentaire.message }}</td>
+                <td>{{ commentaire.sport.nom }}</td>
+                <td>{{ commentaire.user.surnom }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_commentaires_edit', {'id': commentaire.id}) }}">Accepter</a>
+                    {% include "commentaires/_delete_form.html.twig" %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucuns commentaires en attente</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

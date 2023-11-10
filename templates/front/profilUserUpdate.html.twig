@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+
+{% block title %}Profil de
+	{{ user.surnom}}
+{% endblock %}
+
+{% block body %}
+
+	<br>
+	<br>
+	<br>
+
+
+<div class="container mt-5">
+    <div class="card bg-dark text-white border-white shadow">
+        <div class="card-body bg-dark text-white">
+            <h3 class="card-title text-center mb-4">Vos informations</h3>
+            <form method="post" action="{{ path('profil_user_update') }}" class="form-type">
+                <div class="mb-3">
+                    <label for="surnom" class="form-label">Surnom :</label>
+                    <input type="text" class="form-control" name="surnom" value="{{ user.surnom }}">
+                </div>
+                <div class="mb-3">
+                    <label for="prenom" class="form-label">Prénom :</label>
+                    <input type="text" class="form-control" name="nom" value="{{ user.nom }}">
+                </div>
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom :</label>
+                    <input type="text" class="form-control" name="prenom" value="{{ user.prenom }}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email :</label>
+                    <input type="email" class="form-control" name="email" value="{{ user.email }}">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-secondary">Modifier les informations</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

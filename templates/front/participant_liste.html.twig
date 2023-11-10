@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail participant
+{% endblock %}
+
+{% block body %}
+
+
+    
+
+    <h2 class="text-center">TOUS LES PARTICIPANTS</h2>
+
+ <div class="row justify-content-center">
+{% for participant in participants %}
+
+    <div class="col-3 col-4 col-md-3 col-lg-2 m-2">
+    <a href="{{path('fiche_participant', {'id': participant.id})}}">
+      {# <a href="{{ path('classement_epreuve', {'id': classements.sport.id}) }} "> #}
+        <div class="cardParticipant  rounded-4">
+        {# Condition pour dire si tu possede la photo, tu mets celle du participant en question sinon tu mets l'avatar standard #}
+        {% if participant.imageName %}
+          <div class="card-image2 rounded-4"><img src="{{asset('images/photos_participants/' ~ participant.imageName)}}" alt="Photo du participant" /></div>
+        {% else %}
+          <div class="card-image2 rounded-4"><img src="{{asset('images/avatar.png')}}" alt="Photo du participant" /></div>
+        {% endif %}
+          <div class="card-body2">
+          <p>Player n° {{participant.id}}</p>
+            <div class="card-title2">
+              <h3>{{participant.nom}}</h3><h5>voir ses stats</h5>
+              </a>
+            </div>
+            {# </a> #}
+          </div>
+        </div>
+  
+    </div>
+    
+    {% endfor %}
+</div>
+    
+
+    
+    
+
+    
+{% endblock %}
+

@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_tournois_delete', {'id': tournoi.id}) }}" onsubmit="return confirm('Es-tu certain de vouloir supprimer ce tournoi?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tournoi.id) }}">
+    <button class="btn btn-danger col-4 my-3 mx-0">Supprimer le tournoi</button>
+</form>

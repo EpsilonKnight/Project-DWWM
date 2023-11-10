@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+
+{% block title %}Profil de
+	{{ user.surnom}}
+{% endblock %}
+{% block body %}
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center align-items-center" >
+  <div class="card bg-dark text-white border-white">
+    <div class="card-body bg-dark text-white">
+      <h3 class="card-title text-center">Vos informations</h3>
+    </div>
+    <ul class="list-group list-group-flush ">
+      <li class="list-group-item ">Surnom : {{ user.surnom }}</li>
+      <li class="list-group-item">Nom : {{ user.nom }}</li>
+      <li class="list-group-item">Prénom : {{ user.prenom }}</li>
+      <li class="list-group-item">Email : {{ user.email }}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Modifier Mot de passe</a>
+      <a href="{{path('profil_user_update')}}" class="card-link">Modifier informations</a>
+    </div>
+  </div>
+</div>
+
+	
+{% endblock %}

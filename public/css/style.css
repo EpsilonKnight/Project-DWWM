@@ -1,0 +1,839 @@
+
+
+
+
+
+
+.etoile_de_fond {
+   /*video etoile qui scintillent*/
+  position: fixed;
+  
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: -1;  
+}
+
+.addFlash {
+  position: relative;
+  z-index: 11;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 90px;
+  /* définir la même valeur que la hauteur de votre commentaire "addFlash" */
+}
+
+select option {
+  color: black; /*permet de mettre en noir ma liste deroulante dans mes formulaires car couleur blanche pour les caracteres en général*/
+}
+
+html, body {
+  margin:0;
+  padding:0px;
+  }
+
+                                            /* Nav bar*/  
+
+.neonTextNav{
+    font-family: "Raleway";
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 3px 0 5px #d2d2d2, 0 0 10px #fff, 0 0 15px yellow, 0 0 20px #fac900, 0 0 25px                                   #eb4034, 0 0 30px #eb4034, 0 0 35px #eb4034;
+}
+
+.position-nav {
+  z-index: 10;
+  position: absolute; 
+  top: 0; 
+}
+
+
+.navbar-toggler-icon {
+  background-color: white;
+}
+
+.taille-logo{
+  width: 100px;
+  border-radius: 30px;
+}
+.taille-logo-panier{
+  width: 30px;
+}
+
+.navbar_nuage {
+  background-image: url("/images/nuage_noir.jpg")!important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+form input, form textarea, form select {
+  color: black;
+}
+
+
+* { /* ecriture en blanc *veut dire global*/
+  color: white;
+}
+
+.titleBody{
+  padding-bottom: 100px;
+  
+}
+
+                                                  /*page principale*/
+
+.espaceTitre {
+  
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+ 
+}
+
+.neon {
+  position: relative;
+  overflow: hidden;
+  filter: brightness(200%);
+}
+
+.textNeonTitre {
+  background-color: black;
+  color: white;
+  font-size: 5vw;
+  font-weight: bold;
+  font-family:monospace;
+  text-transform: uppercase;
+  position: relative;
+  user-select: none;
+  
+  
+}
+
+.textNeonTitre::before {
+  content: attr(data-text);
+  position: absolute;
+  color: white;
+  filter: blur(0.02em);
+  mix-blend-mode: difference;
+}
+
+
+
+.gradient {
+  position: absolute;
+  background: linear-gradient(15deg,#ffea2c, gold, lightgreen, gold, #ffea2c);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  mix-blend-mode: multiply;
+}
+
+.spotlight {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  right: 0;
+  bottom: 0;
+  background: 
+      radial-gradient(
+          circle,
+          white,
+          transparent 25%
+      ) center / 25% 25%,
+      radial-gradient(
+          circle,
+          white,
+          black 25%
+      ) center / 12.5% 12.5%;
+  animation: light 5s linear infinite;
+  mix-blend-mode: color-dodge;
+}
+
+@keyframes light {
+  to {
+      transform: translate(50%, 50%);
+  }
+}
+
+
+
+
+@-webkit-keyframes logomorph {
+  0% {
+    opacity:1;
+  }
+  25% {
+    opacity:1;
+  }
+  75% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+  }
+  }
+  
+  @-moz-keyframes logomorph {
+  0% {
+    opacity:1;
+  }
+  25% {
+    opacity:1;
+  }
+  75% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+  }
+  }
+  
+  @-o-keyframes logomorph {
+  0% {
+    opacity:1;
+  }
+  25% {
+    opacity:1;
+  }
+  75% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+  }
+  }
+  
+  @keyframes logomorph {
+  0% {
+    opacity:1;
+  }
+  25% {
+    opacity:1;
+  }
+  75% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+  }
+  }
+  
+  .mainlogo {
+    position:relative;
+    height:281px;
+    width:220px;
+    margin:5px;
+    
+    
+  }
+  .mainlogo img {
+    position:absolute;
+    left:0;
+    height: 250px;
+    width: 200px;
+    border-radius: 100%;
+    box-shadow: 2px 10px 15px white;
+  }
+
+
+
+.mainlogo img.logotop {
+    animation-name: logomorph;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-direction: alternate;
+    z-index: 2;
+}
+.tailleVideoHome{
+  width: 250px;
+}
+
+/*décalage du titre*/
+@keyframes slideInLeft {
+  0% {margin-left: -100%;}
+  100% {margin-left: 0;}
+}
+@keyframes slideInRight {
+  0% {margin-right: -100%;}
+  100% {margin-right: 0;}
+}
+
+
+.colorful-titleLeft {
+  color: #d2d2d2;
+  animation: slideInLeft 4s forwards;
+  text-align: center;
+  font-size: 2vh;
+  box-shadow: 0px 1px 5px 5px rgba(255, 255, 255, 0.667);
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+
+.colorful-titleRight {
+  color: #d2d2d2;
+  animation: slideInRight 4s forwards;
+  text-align: center;
+  font-size: 2vh;
+  box-shadow: 0px 1px 5px 5px rgba(255, 255, 255, 0.667);
+  margin-bottom: 50px;
+  border-radius: 10px;
+
+}
+
+
+
+                                        /* page des tournois*/
+
+
+
+/* -------les card de tournois qui se retournent----------front index.html.twig */
+
+#podium{
+
+}
+
+.tournois-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.list-group-item {
+  text-align: center;
+}
+
+
+
+.card-container {
+  margin-top: 40px;
+  margin: 50px;
+  padding: 10px;
+  display: flex;
+  flex: 1 0 50%;
+  position: relative;
+  height: 250px;
+  /* width: 400px; */
+  min-width: 300px;
+  max-width: 300px;
+  border-radius: 50%;
+  
+  
+}
+
+
+
+.card-container:hover .cardcomplete {
+  transform: rotateY(180deg);
+  outline: 7px solid #d2d2d2;
+  
+}
+
+.cardcomplete {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: all 0.8s ease;
+  transform-style: preserve-3d;
+  outline: 15px solid #423630;
+  border-radius: 50%;
+  
+}
+
+.card-front {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #d2d2d2;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+ 
+  background-size: cover;
+  background-position: center;
+  height: 120%;
+  width: 100%;
+}
+
+.card-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  background: rgb(0, 10, 14);
+  backface-visibility: hidden;
+  transform: rotateY(-180deg);
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0px 0px 400px 50px rgba(98, 255, 46, 0.96);
+}
+
+#arrierecard {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  
+
+}
+
+                                          /* Tableau des résultats totaux */
+
+
+@keyframes clignotant {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+.joliePositionChiffre {
+    animation: clignotant 1s infinite;
+    color: #fac900!important;
+    font-size:x-large;
+    font-family: fantasy;
+
+}
+
+.textNeonTitre1 {
+  background-color: black;
+  color: white;
+  font-size: 3vw;
+  font-weight: bold;
+  font-family:monospace;
+  text-transform: uppercase;
+  position: relative;
+  user-select: none;
+  
+  
+}
+
+
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+table.steelBlueCols {
+  margin: 0 auto;
+  border: 4px solid #d2d2d2;
+  background-color: #1f1f1f;
+  /* width: 400px; */
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table.steelBlueCols td,
+table.steelBlueCols th {
+  border: 1px solid #555555;
+  padding: 3px 5px;
+}
+
+table.steelBlueCols tbody td {
+  font-size: auto;
+  /*//epaisseur du texte */
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+table.steelBlueCols td:nth-child(row) {
+  background: #105974;
+}
+
+table.steelBlueCols thead {
+  background: #1f1f1f;
+  border-bottom: 0px solid #398AA4;
+}
+
+table.steelBlueCols thead th {
+  font-size: auto;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: left;
+  border-left: 2px solid #ffffff;
+}
+
+table.steelBlueCols thead th:first-child {
+  border-left: none;
+}
+
+
+table.steelBlueCols tfoot td {
+  font-size: 13px;
+}
+
+table.steelBlueCols tfoot .links {
+  text-align: right;
+}
+
+table.steelBlueCols tfoot .links a {
+  display: inline-block;
+  background: #ffffff;
+  color: #398AA4;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+
+
+                          /* cartes des thphees  page des gagnants des epreuves*/
+.neonText1{
+    font-family: "Raleway";
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e6f02f, 0 0 20px #f4ce11, 0 0 25px                                   #eb4034, 0 0 30px #eb4034, 0 0 35px #eb4034;
+} /*titre en Neon*/
+
+.card-img-top {
+  width: 100%;
+  height: 175px; /* Ajustez la hauteur comme vous le souhaitez */
+  object-fit: cover; /* ou "contain" si vous voulez conserver l'aspect ratio */
+}
+.img-bordered {
+  border: 1px solid white;
+}
+.white-text-black-arround {
+  color: white;
+  text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black;
+}
+/* Cette classe applique une couleur de texte blanche au texte et une ombre de texte noire à l'extérieur de celui-ci, créant ainsi l'effet souhaité. */
+
+
+.tournoiAn{
+  margin: 20px;
+}
+
+
+
+                                  /* Classement par epreuves en groupe */
+
+.ClassEpreuves{
+  text-align: center;
+  font-size: 4rem;
+}
+
+.textMulticolor{
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: -webkit-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet);
+}
+
+
+.table1 {
+  
+  background-color: rgba(65, 62, 62, 0.9);
+  font-size: 1em;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.box_shadow{
+  box-shadow: 2px 10px 15px white;
+  
+}
+
+
+
+
+                                                  /* carte listing des epreuves*/
+.cardEpreuve {
+  width: 300px; /*1*/
+  margin: 50px ; /*2*/
+  background-color: rgb(0, 0, 0); /*3*/
+  box-shadow: 0px 5px 20px #999; /*4*/
+}
+.cardEpreuve a { /*5*/
+  color: #333; 
+  text-decoration:double;
+}
+
+.card-image1 {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+.card-image1 img {
+  width: 150%;
+    /* - Méthode de centrage en fonction de la taille de l'image */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: grayscale(1);
+    /*Transition */
+  transition-property: filter width; 
+  transition-duration: .3s;
+  transition-timing-function: ease;
+}
+.card-image1 img:hover {
+  filter: grayscale(0);
+  width: 100%; /*permet de dézoomer lors du passage de la souris en  2 secondes*/
+  transition-duration: 2s;
+}
+.card-body1 {
+  text-align:center;
+padding: 15px 20px;
+box-sizing: border-box;
+}
+.card-date1 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.card-title1, .card-excerpt1 {
+   font-family: 'Playfair Display', serif;
+}
+
+.card-date1, .card-title1 {
+  text-align:center;
+  text-transform:uppercase;
+  font-weight: bold;
+}
+
+                                      /* carte listing des participants*/
+
+                                          /* carte listing des epreuves*/
+.cardParticipant {
+  width: 150px; /*1*/
+  margin: 5px ; /*2*/
+  background-color: rgb(0, 0, 0); /*3*/
+  box-shadow: 0px 5px 20px #999; /*4*/
+}
+.cardParticipant a { /*5*/
+  color: #d1d0d0; 
+  text-decoration:double;
+}
+
+.card-image2 {
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+.card-image2 img {
+  width: 100%;
+    /* Méthode de centrage en fonction de la taille de l'image */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: grayscale(1);
+   
+  transition-property: filter width; 
+  transition-duration: .3s;
+  transition-timing-function: ease;
+}
+
+.card-image2 img:hover {
+  filter: grayscale(0);
+  width: 250%; /*permet de zoomer lors du passage de la souris en  2 secondes*/
+  transition-duration: 2s;
+}
+.card-body2 {
+  text-align:center;  
+  padding: 15px 20px; 
+  box-sizing: border-box; 
+}
+
+.card-title2 {
+   font-family: 'Playfair Display', serif;
+}
+
+.card-title2
+ {
+  text-align:center;
+  
+  font-weight: bold;
+}
+
+/* petite image intercalé entre deux victoire de trophées*/
+
+.separation-victoire{
+  width: 25px;
+}
+
+                          /* classement des trophee par participant*/
+.buttonStyle{
+  border: 3px solid rgb(236, 248, 0)
+}
+.buttonStyle:hover{
+  border: 3px solid rgb(242, 64, 4);
+  background-color: black;
+  
+}
+
+.total-trophee{
+  font-size: 22px;
+}
+
+
+.ligne-trophee{
+  border: 2px solid white;
+  width: 1200 ;
+}
+.liste-trophee{
+  margin: 20px;
+}
+
+.ligne-trophee:nth-child(even) {
+  background-color: #302f2f;
+}
+
+
+                                      /* fiche participant */
+
+@keyframes move {
+  0% {transform: translateX(0);}
+  50% {transform: translateX(100px);}
+  100% {transform: translateX(0);}
+}
+
+.texte-animate-titre {
+  font-size: 60px; /* Taille initiale du texte */
+  animation: move 5s linear infinite; /* Animation de déplacement en boucle */
+}
+
+@keyframes sparkles {
+  0% {background-position: 0 0;}
+  100% {background-position: 700px 800px;}
+}
+
+.titre-participant {
+  animation: sparkles 5s linear infinite;
+  background: linear-gradient(-45deg, #f7bb97, #dd5e89, #a30c8d, #4f0c7d, #052c8f, #0352a0, #0184a8, #05a4c6, #0db39e, #06a727, #c7cc2d, #f9f22e, #f7bb97);
+  background-size: 500px 500px;
+  background-repeat: repeat;
+  color: #e0ecec;
+  text-shadow: 1px 1px #000;
+  height: auto;
+  
+}
+
+.tropheeParticipant{
+  width: 100%;
+  height: 100%; 
+  transition: transform 1s ease-in-out;
+}
+
+.tropheeParticipant:hover{
+  transform: rotate(360deg);
+}
+
+
+.trophee-container {
+  position: relative;
+  border: 1px solid white;
+  margin: 3px;
+}
+
+.trophee-nom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 2px black;
+  z-index: 1;
+}
+
+.shadow_box{
+  box-shadow: 5px 5px 5px rgb(254, 252, 252);
+}
+
+.NbMoyPos{
+  animation: clignotant 1s infinite;
+    color: rgb(255, 217, 0)!important;
+    font-size:9rem;
+    font-family: fantasy;
+    text-align: center;
+}
+
+
+                                                   /* galerie photos */
+
+.tailleImgGalerie {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+  background-position: center center;
+}
+
+.form-photo {
+	border: 3px solid;
+	border-radius: 10px;
+	padding: 15px;
+  margin-bottom: 30px;
+}
+
+
+                                                          /*PRODUITS*/
+.cardProduit {
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px 5px 5px rgb(254, 252, 252);
+  border: 1px solid;
+}
+
+.photo-container {
+	position: relative;
+}
+
+.tailleImgGalerie {
+	cursor: pointer;
+}
+
+.tailleImgGalerie.fullscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+
+                                                            /*footer*/
+.footerMario{
+  width: 100%;
+  height: auto;
+  opacity: 0.45;
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+footer {
+
+  margin-top: 380px;
+}
+ 
+
+  
+	
+

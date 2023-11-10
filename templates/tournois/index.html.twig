@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tournois index{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-10">
+		
+			<h1 class="text-center">Tournois index</h1>
+			<a href="{{ path('app_tournois_new') }}" class="col-12 btn btn-success text-center">Créer un nouveau tournoi</a>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Annee</th>
+						<th class="text-center">Participants</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for tournoi in tournois %}
+						<tr  class="border border-white">
+							<td>{{ tournoi.nom }}</td>
+							<td>{{ tournoi.annee }}</td>
+							<td>
+								<div class="row">
+									{% for participant in tournoi.participants %}
+										<div class="col-1 mx-4">{{ participant.nom }}</div>
+										{% if loop.index % 10 == 0 %}
+											</div><div class="row">
+										{% endif %}
+									{% endfor %}
+								</div>
+							</td>
+							
+							<td class="btn-group">
+  <a href="{{ path('app_tournois_show', {'id': tournoi.id}) }}" class="btn btn-primary active" aria-current="page">Voir</a>
+  <a href="{{ path('app_tournois_edit', {'id': tournoi.id}) }}" class="btn btn-primary">Modifier</a>
+  
+</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les produits
+{% endblock %}
+
+{% block body %}
+
+	<div class="container d-flex align-items-center justify-content-center">
+		<div class="row">
+			{% for produit in produits %}
+
+				<div class="card bg-black  border-5 cardProduit m-2" style="width: 18rem;">
+					<h1>{{ produit.nom}}</h1>
+					<img src="{{ asset('/images/multisport.jpg')}}" class="card-img-top" alt="...">
+					<div class="card-body">
+
+						<p class="card-text">{{produit.description}}</p>
+						
+					</div>
+                    <h3 class="card-text">{{produit.prix}}
+							€</h3>
+                    <a href="{{ path('add_panier', {'id': produit.id} )}}">
+                    <button class="col-12 btn btn-secondary mb-2 text-center">Ajouter au panier</button>
+                    </a>
+                    </div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+vich_uploader:
+    db_driver: orm
+
+    metadata:
+        type: attribute
+
+    mappings:
+        products:
+            uri_prefix: /images/products
+            upload_destination: "%kernel.project_dir%/public/images/products"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        sports:
+            uri_prefix: /images/photos_epreuves
+            upload_destination: "%kernel.project_dir%/public/images/photos_epreuves"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        participants:
+            uri_prefix: /images/photos_participants
+            upload_destination: "%kernel.project_dir%/public/images/photos_participants"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        photos:
+            uri_prefix: /images/galerie_photos
+            upload_destination: "%kernel.project_dir%/public/images/galerie_photos"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            # inject_on_load: true
+            # delete_on_update: true
+            # delete_on_remove: true
+
+        imageTrophee:
+            uri_prefix: /images/imageTrophee
+            upload_destination: "%kernel.project_dir%/public/images/imageTrophee"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        imageWin:
+            uri_prefix: /images/imageDuTrophee
+            upload_destination: "%kernel.project_dir%/public/images/imageDuTrophee"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        imageWinPart:
+            uri_prefix: /images/imageWin
+            upload_destination: "%kernel.project_dir%/public/images/imageWin"
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

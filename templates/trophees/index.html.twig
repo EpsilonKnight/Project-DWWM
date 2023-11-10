@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trophees index
+{% endblock %}
+{% block h1 %}
+	Gestion des trophées
+{% endblock %}
+{% block body %}
+
+
+	<a class="btn btn-primary" href="{{ path('app_trophees_new') }}">Ajouter Nouveau Trophée</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Année</th>
+				<th>Nom</th>
+
+				<th>Gagnant(s)</th>
+
+			</tr>
+
+		</thead>
+		<tbody>
+			{% for trophee in trophees %}
+				<tr>
+					<td>{{ trophee.tournois.annee }}</td>
+					<td>{{ trophee.sports.nom }}</td>
+					{% for participant in trophee.participants %}
+						<td>{{ participant.nom }}</td>
+					{% endfor %}
+					<td>
+						<div style="display: inline-block;">
+							<a class="btn btn-success" href="{{ path('app_trophees_show', {'id': trophee.id}) }}">Voir</a>
+						</div>
+						<div style="display: inline-block;">
+							<a class="btn btn-warning" href="{{ path('app_trophees_edit', {'id': trophee.id}) }}">Modifier</a>
+						</div>
+					</td>
+
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">Aucuns trophées d'ajoutés</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+{% endblock %}

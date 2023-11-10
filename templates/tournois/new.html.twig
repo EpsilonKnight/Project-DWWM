@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveaux Tournois{% endblock %}
+
+{% block body %}
+<div class="border border-white">
+<a href="{{ path('app_tournois_index') }}" class="btn btn-dark">Retour</a> 
+    <h1 class="text-center mb-5 border border-white">Créer un nouveau tournoi</h1>
+
+    {{ include('tournois/_form.html.twig') }}
+    </div>
+
+    <a href="{{ path('app_tournois_index') }}" class="btn btn-dark">Retour</a>
+{% endblock %}
+
+
+{% block javascripts %}
+
+<script src={{ asset('js/collection-type.js')}}></script>
+
+{% endblock %}

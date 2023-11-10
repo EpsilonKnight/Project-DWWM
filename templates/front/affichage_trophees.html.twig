@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block h1 %}TABLEAU DES TROPHEES /  PARTICIPANTS
+{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-center">
+	<h2></h2>
+</div>
+<table class="liste-trophee">
+    <thead>
+        <tr>
+        <div class="d-flex justify-content-center">
+        
+            <button id="classByOrder" class="btn btn-secondary col-5 mx-1 buttonStyle">Classer par Ordre décroissant</button>
+            <button id="classByOrder1" class="btn btn-secondary col-5 mx-1 buttonStyle">Classer par Ordre croissant</button>
+        </div> 
+            <th>Total</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        {% for participant in participants %}
+            <tr class="ligne-trophee">
+                {% set total = 0 %}
+                {% for trophee in trophees %}
+                    {% if participant in trophee.participants %}
+                        {% set total = total + 1 %}
+                    {% endif %}
+                {% endfor %}
+                
+                <td class="total-trophee" id="totalTrophee">{{ total }}</td>
+                <td class="total-trophee">{{ participant.nom }}</td>
+                <td>
+                    {% for trophee in trophees %}
+                        {% if participant in trophee.participants %}
+                            <em>{{ trophee.sports.nom }}{{ trophee.tournois.annee }}</em><img class="separation-victoire" src="{{ asset('images/cup.png') }}">
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+ 
+
+	
+{% endblock %}
+{% block javascripts %}
+ <script src={{ asset('js/script.js')}}></script>
+{% endblock %}

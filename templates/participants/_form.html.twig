@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <img src="{{asset('images/photos_participants/'~ participant.imageName)}}" alt="">
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

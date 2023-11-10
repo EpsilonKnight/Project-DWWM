@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Positions index{% endblock %}
+
+{% block body %}
+    <h1>Positions index</h1>
+        <a href="{{ path('app_positions_new') }}">Create new</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Positions</th>
+                <th>Joueurs</th>
+                <th>Année</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for position in positions %}
+            <tr>
+                <td>{{ position.id }}</td>
+                <td>{{ position.positions }}</td>
+                <td>{{ position.participants.nom }}</td>
+                <td>{{ position.tournois.annee }}</td>
+                <td>
+                    <a href="{{ path('app_positions_show', {'id': position.id}) }}">show</a>
+                    <a href="{{ path('app_positions_edit', {'id': position.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tournois
+{% endblock %}
+
+{% block body %}
+	{% include "_flashes.html.twig" %}
+
+	<h1 class="ClassEpreuves">
+		<a href="{{path('epreuve_liste')}}">
+			<button type="submit" class="btn btn-light">Retour</button>
+		</a>
+		<span class="textMulticolor">{{ classements[0].sports.nom }}</span>
+		<a href="{{path('epreuve_liste')}}">
+			<button type="submit" class="btn btn-light">Retour</button>
+		</a>
+	</h1>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-8 ">
+				<div class="row d-md-flex justify-content-center">
+					{% for tournoi in tournois %}
+						{% set classementsFiltered = classements|filter(c => c.tournois.annee == tournoi.annee) %}
+						{% if classementsFiltered|length > 0 %}
+							<div class="col-3 col-sd-3 col-md-3 box_shadow mx-2 table-container m-2">
+							<div class=" text-center">
+								<table class="table1 text-center">
+									<thead>
+										<h4>CCT{{ tournoi.annee }}</h4>
+										<tr>
+											<th>Place</th>
+											<th>Joueurs</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										{% for classement in classementsFiltered|sort((a, b) => a.positions <=> b.positions) %} {#permet de classer par ordre croissant#}
+											<tr>
+												<td>{{ classement.positions }}</td>
+												<td>{{ classement.participants.nom }}</td>
+												
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+
+
+			<div class="col-12 col-md-4">
+				{% if app.user %}
+					{{ form_start(formCommentaire) }}
+					<div class="col-12 mt-1 comment-input">
+						{{ form_widget(formCommentaire.message, {'attr': {'rows': 3}}) }}
+					</div>
+					<input type="submit" class="btn btn-primary col-12 mt-1" value="Enregistrer">
+					{{ form_end(formCommentaire) }}
+				{% else %}
+					<h3>Veuillez vous connecter pour laisser votre commentaire</h3>
+				{% endif %}
+				{% if commentaires %}
+					{% for commentaire in commentaires %}
+
+						<div class="border border-dark p-3 my-3">
+							<div class="row justify-content-between">
+								<p class="col-md-8">Par:
+									{{ commentaire.user.surnom }}</p>
+								{# <p class="col-md-3">{{ commentaire.createdAt|date('d/m/Y H:i:s') }}</p> #}
+							</div>
+							{{commentaire.message}}
+						</div>
+
+					{% endfor %}
+				{% else %}
+					<h3>Soit le premier à laisser une marque !!!</h3>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

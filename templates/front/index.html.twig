@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tournois
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="tournois-container">
+		{% for tournoi in tournois %}
+
+
+			<div class="card-container ">
+				<div class="cardcomplete">
+					<div class="card-front">
+						<div class="image-container">
+						{% if tournoi.imageTrophee %}
+							<div class="list-group list-group-flush">
+								<img id="podium" src="{{ asset('images/imageDuTrophee/' ~ tournoi.imageTrophee) }}" alt="trophee de l'année">
+
+							</div>
+						{% else %}
+							<div class="list-group list-group-flush">
+								<img id="podium" src="{{ asset('images/competition.jpg') }}" alt="trophee de l'année">
+								<h6 class="text-center">Me manque l'image</h6>
+
+							</div>
+						{% endif %}
+							
+						</div>
+					</div>
+					<div class="card-back">
+
+						<a href="{{ path('app_classement_index', {'id': tournoi.id}) }}" style="text-decoration:none;">
+							<img id="arrierecard" src="{{ asset('images/imageWin/' ~ tournoi.imageWinner) }}" alt="photo du gagnant">
+							{# <img id="arrierecard" src="{{ asset('images/tounrois/'~ tournois.imageName)}}" alt="photo de groupe">{{tournoi.annee}} #}
+						</a>
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
+	</div>
+
+{% endblock %}

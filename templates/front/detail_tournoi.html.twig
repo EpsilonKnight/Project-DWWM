@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail
+{% endblock %}
+{% block h1 %}
+	Les Gagnants des épreuves
+{% endblock %}
+{% block body %}
+
+
+	{% for tournoi in tournois %}
+		<div class="row">
+			<div class="col-12 col-lg-8">
+				<div class="text-center">
+					<h1 class="tournoiAn neonText1">CCT :{{tournoi.annee}}</h1>
+				</div>
+
+				<div class="row d-md-flex">	
+					{% for trophee in trophees %}
+						{% if trophee.tournois.annee == tournoi.annee%}
+
+							<div class="col-4 d-flex flex-column justify-content-between mt-1">
+								<div class="position-relative ">
+									<a href="{{ path('classement_epreuve', {'id': trophee.sports.id}) }} ">
+										<img src="{{asset('images/photos_epreuves/' ~ trophee.sports.imageName)}}" class="card-img-top img-fluid img-bordered rounded-4" alt="">
+
+										<div class="card-body position-absolute text-white card-img-overlay">
+
+											<h3 class="card-title white-text-black-arround m-2">{{ trophee.sports.nom }}</h3>
+
+											<h6 class="white-text-black-arround m-2">Gagnant(s):</h6>
+											<div class="text-center">
+												{% for participant in trophee.participants %}
+													<strong>
+														<em class="white-text-black-arround">{{ participant.nom }}</em>
+													</strong>
+												{% endfor %}
+											</div>
+										</div>
+										</a>
+									</div>
+								</div>
+
+							{% endif %}
+
+						{% endfor %}
+					</div>
+				</div>
+				<div class=" col-12 col-lg-4">
+
+					<table class="table">
+						<h1 class="tournoiAn neonText1">Récap {{tournoi.annee}}</h1>
+						<thead>
+							<tr>
+								<th>Sport</th>
+								<th>Gagnants</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for trophee in tournoi.trophees %}
+								<tr>
+									<td>{{ trophee.sports.nom }}</td>
+									<td>
+										{% for participant in trophee.participants %}
+											{{ participant.nom }}
+											{% if not loop.last %},
+											{% endif %}
+										{% endfor %}
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		{% endfor %}
+
+
+		{# {% for tournoi in tournois %}
+					<div class="row">
+						<div class="col-12 col-md-8">
+							<h1 class="tournoiAn">CCT :{{tournoi.annee}}</h1>
+							<div class="row d-md-flex">
+								{% for trophee in trophees %}
+									<div class="col-4 d-flex flex-column justify-content-between mt-1">
+										{% if trophee.tournois.annee == tournoi.annee %}
+											<div class="position-relative">
+												<img src="{{asset('images/photos_epreuves/' ~ trophee.sports.imageName)}}" class="card-img-top img-fluid img-bordered" alt="">
+												<div class="card-body position-absolute text-white card-img-overlay">
+													<h3 class="card-title white-text-black-arround">{{ trophee.sports.nom }}</h3>
+													<h6 class="white-text-black-arround">Gagnant(s):</h6>
+													<div class="text-center">
+														{% for participant in trophee.participants %}
+															<strong>
+																<em class="white-text-black-arround">{{ participant.nom }}</em>
+															</strong>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										{% endif %}
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				{% endfor %} #}
+
+	{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Classement{% endblock %}
+
+{% block body %}
+    <h1>Attribution des points</h1>
+
+    {{ include('classement/_form.html.twig') }}
+
+    {# <a href="{{ path('app_classement_index',{'id' : tournois}) }}">back to list</a> #}
+{% endblock %}
